@@ -1,0 +1,42 @@
+[
+  {
+    "from": {"class": "TestEnvironmentError"},
+    "to": {"class": "TwoCommand"},
+    "exception": "<class 'OSError'>"
+  },
+  {
+    "from": {"class": "PrintCmd"},
+    "to": {"class": "OneCommand"},
+    "exception": "<class 'ConnectionError'>"
+  },
+  {
+    "from": {"class": "TwoCommand"},
+    "to": {"class": "OneCommand"},
+    "exception": "<class 'ConnectionError'>"
+  },
+  {
+    "from": {"class": "TwoCommand"},
+    "to": {"class": "OneCommand"},
+    "exception": "<class 'OSError'>"
+  },
+    {
+    "from": {"class": "OneCommand"},
+    "to": {"class": "StopExecution"},
+    "exception": "<class 'OSError'>"
+  },
+  {
+    "from": {"class": "OneCommand"},
+    "to": {"class": "Log"},
+    "exception": "<class 'ConnectionError'>"
+  },
+  {
+    "from": {"class": "TestConnectionError"},
+    "to": {"class": "OneCommand"},
+    "exception": "<class 'ConnectionError'>"
+  },
+  {
+    "from": {"class": "PrintCmd"},
+    "to": {"class": "Log"},
+    "exception": "<class 'ConnectionError'>"
+  }
+]
