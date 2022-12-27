@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Tue Dec 27 12:11:29 GMT 2022","Tue Dec 27 12:11:29 GMT 2022","3","","","","","","text environment exception (command is repeated 2 time)",""
+"passed","Tue Dec 27 12:11:29 GMT 2022","Tue Dec 27 12:11:29 GMT 2022","4","","","","","","text queue",""
+"passed","Tue Dec 27 12:11:29 GMT 2022","Tue Dec 27 12:11:29 GMT 2022","2","","","","","","text connection exception (command is repeated 1 time)",""
