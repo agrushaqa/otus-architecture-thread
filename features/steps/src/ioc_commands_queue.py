@@ -19,56 +19,11 @@ class IocCommandQueue:
         self.data = data
         while self._running:
             self.before_each_cycle()
-            try:
-                cmd = self.queue_handler(self.direct_queue,
-                                         "direct_queue")
-                if cmd is not None:
-                    try:
-                        cmd.execute()
-                        logger.info("direct_queue execute command:")
-                        logger.info(cmd)
-                    except Exception as ex:
-                        logger.exception("exception:")
-                        logger.exception(ex)
-                        exception_handler(self.direct_queue, cmd, ex)
-            except Exception as ex:
-                logger.exception("exception:")
-                logger.exception(ex)
-                pass
-            try:
-                ioc_reg_cmd = self.queue_handler(
-                    self.ioc_register_direct_queue,
-                    "ioc_register_direct_queue")
-                if ioc_reg_cmd is not None:
-                    method_reg_name = ioc_reg_cmd[0]
-                    method_real_name = ioc_reg_cmd[1]
-                    self.data.ioc.resolve(key="IoC.register",
-                                          registered_name=method_reg_name,
-                                          called_method=method_real_name
-                                          ).execute()
-                    logger.info(method_reg_name)
-                    logger.info(method_real_name)
-                    # для того чтобы сначала все команды зарегистрировались:
-                    continue
-            except Exception as ex:
-                logger.exception("exception:")
-                logger.exception(ex)
-                exception_handler(self.ioc_register_direct_queue, cmd, ex)
-            try:
-                ioc_cmd = self.queue_handler(self.ioc_exec_direct_queue,
-                                             "ioc_exec_direct_queue")
-                if ioc_cmd is not None:
-                    self.data.ioc.resolve(ioc_cmd['command'],
-                                          *ioc_cmd['argv'],
-                                          **ioc_cmd['kwargs']).execute()
-                    logger.info("ioc_exec_direct_queue execute command:")
-                    logger.info(ioc_cmd['command'])
-                    logger.info(ioc_cmd['argv'])
-                    logger.info(ioc_cmd['kwargs'])
-            except Exception as ex:
-                logger.exception("exception:")
-                logger.exception(ex)
-                exception_handler(self.ioc_exec_direct_queue, cmd, ex)
+
+            self.queue_without_ioc()
+            if self.ioc_register_queue():
+                continue
+            self.ioc_execution_queue()
 
             if self.direct_queue.qsize() == 0:
                 if self.ioc_exec_direct_queue.qsize() == 0:
@@ -77,6 +32,63 @@ class IocCommandQueue:
                             self._soft_stop_waiter_counter -= 1
                 if self._soft_stop_waiter_counter < 0:
                     break
+
+    def queue_without_ioc(self):
+        try:
+            cmd = self.queue_handler(self.direct_queue,
+                                     "direct_queue")
+            if cmd is not None:
+                try:
+                    cmd.execute()
+                    logger.info("direct_queue execute command:")
+                    logger.info(cmd)
+                except Exception as ex:
+                    logger.exception("exception:")
+                    logger.exception(ex)
+                    exception_handler(self.direct_queue, cmd, ex)
+        except Exception as ex:
+            logger.exception("exception:")
+            logger.exception(ex)
+            pass
+
+    def ioc_register_queue(self):
+        try:
+            ioc_reg_cmd = self.queue_handler(
+                self.ioc_register_direct_queue,
+                "ioc_register_direct_queue")
+            if ioc_reg_cmd is not None:
+                method_reg_name = ioc_reg_cmd[0]
+                method_real_name = ioc_reg_cmd[1]
+                self.data.ioc.resolve(key="IoC.register",
+                                      registered_name=method_reg_name,
+                                      called_method=method_real_name
+                                      ).execute()
+                logger.info(method_reg_name)
+                logger.info(method_real_name)
+                # для того чтобы сначала все команды зарегистрировались:
+                return True
+        except Exception as ex:
+            logger.exception("exception:")
+            logger.exception(ex)
+            exception_handler(self.ioc_exec_direct_queue, ioc_reg_cmd, ex)
+        return False
+
+    def ioc_execution_queue(self):
+        try:
+            ioc_cmd = self.queue_handler(self.ioc_exec_direct_queue,
+                                         "ioc_exec_direct_queue")
+            if ioc_cmd is not None:
+                self.data.ioc.resolve(ioc_cmd['command'],
+                                      *ioc_cmd['argv'],
+                                      **ioc_cmd['kwargs']).execute()
+                logger.info("ioc_exec_direct_queue execute command:")
+                logger.info(ioc_cmd['command'])
+                logger.info(ioc_cmd['argv'])
+                logger.info(ioc_cmd['kwargs'])
+        except Exception as ex:
+            logger.exception("exception:")
+            logger.exception(ex)
+            exception_handler(self.ioc_exec_direct_queue, ioc_cmd, ex)
 
     def queue_handler(self, current_queue, name="queue"):
         cmd = None
