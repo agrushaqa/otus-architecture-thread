@@ -171,7 +171,7 @@ python -m pytest --rootdir=. tests\test_common.py
 ```
 ## run with allure
 ```
-python -m pytest --rootdir=. tests --alluredir=report/
+python -m pytest --rootdir=. tests --alluredir=reports/
 ```
 # allure
 ```
