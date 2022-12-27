@@ -1,0 +1,15 @@
+2022-12-27 13:09:36.344 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:98 - ioc_register_direct_queue get command:
+2022-12-27 13:09:36.345 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:99 - ('HardStop', <bound method IocCommandQueue.stop of <features.steps.src.ioc_commands_queue.IocCommandQueue object at 0x7ff71b9cd660>>)
+2022-12-27 13:09:36.345 | INFO     | features.steps.src.ioc_commands_queue:ioc_register_queue:66 - HardStop
+2022-12-27 13:09:36.345 | INFO     | features.steps.src.ioc_commands_queue:ioc_register_queue:67 - <bound method IocCommandQueue.stop of <features.steps.src.ioc_commands_queue.IocCommandQueue object at 0x7ff71b9cd660>>
+2022-12-27 13:09:37.346 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:98 - ioc_register_direct_queue get command:
+2022-12-27 13:09:37.346 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:99 - ('Sleep', <built-in function sleep>)
+2022-12-27 13:09:37.347 | INFO     | features.steps.src.ioc_commands_queue:ioc_register_queue:66 - Sleep
+2022-12-27 13:09:37.347 | INFO     | features.steps.src.ioc_commands_queue:ioc_register_queue:67 - <built-in function sleep>
+2022-12-27 13:09:38.348 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:98 - ioc_exec_direct_queue get command:
+2022-12-27 13:09:38.348 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:99 - {'command': 'HardStop', 'argv': (), 'kwargs': {}}
+2022-12-27 13:09:38.348 | INFO     | features.steps.src.ioc_commands_queue:ioc_execution_queue:84 - ioc_exec_direct_queue execute command:
+2022-12-27 13:09:38.349 | INFO     | features.steps.src.ioc_commands_queue:ioc_execution_queue:85 - HardStop
+2022-12-27 13:09:38.349 | INFO     | features.steps.src.ioc_commands_queue:ioc_execution_queue:86 - ()
+2022-12-27 13:09:38.349 | INFO     | features.steps.src.ioc_commands_queue:ioc_execution_queue:87 - {}
+2022-12-27 13:09:38.349 | INFO     | test_ioc_queue:test_thread_ioc_hard_stop_with_command:110 - 3.005957841873169
