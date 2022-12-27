@@ -1,7 +1,6 @@
-# import allure
-# import pytest
-import common
-import print_for_test
+import print_for_test as print_for_test
+
+import features.steps.src.ioc.common as common
 
 
 class TestCommon:

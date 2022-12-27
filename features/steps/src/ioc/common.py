@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import executor
+import features.steps.src.executor as executor
 
 
 class IoC:

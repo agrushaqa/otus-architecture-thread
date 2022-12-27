@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from common import IoC
+from features.steps.src.ioc.common import IoC
 
 
 class Scopes:

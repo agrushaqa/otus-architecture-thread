@@ -1,7 +1,7 @@
-from threading import local
-from threading import Thread
-from scope import Scopes
-from common import IoC
+from threading import Thread, local
+
+from features.steps.src.ioc.common import IoC
+from features.steps.src.scope import Scopes
 
 data = local()
 

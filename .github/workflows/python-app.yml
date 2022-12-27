@@ -5,7 +5,7 @@ name: Python application
 
 on:
   push:
-    branches: [ "dz3" ]
+    branches: [ "dz7" ]
   pull_request:
     branches: [ "main" ]
 
@@ -29,6 +29,9 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install behave
         python -m pip install allure-behave
+        python -m pip install pytest
+        python -m pip install allure-python-commons
+        python -m pip install loguru
         python -m pip install flake8
     - name: Lint with flake8
       run: |
@@ -39,6 +42,9 @@ jobs:
     - name: Run tests with behave
       run: |
         python -m behave -f allure_behave.formatter:AllureFormatter -o report ./features
+    - name: Run tests with pytest
+      run: |
+        python -m pytest --rootdir=. tests --alluredir=report/
     - name: Install Allure
       run: |
         sudo apt-get update 
@@ -76,4 +82,4 @@ jobs:
           context: 'Test report'
           state: 'success'
           sha: ${{ github.event.pull_request.head.sha || github.sha}}
-          target_url: https://agrushaqa.github.io/agrushaqa-otus-architecture-2022-dz3-exception/${GITHUB_RUN_NUMBER}
+          target_url: https://agrushaqa.github.io/otus-architecture-thread/${GITHUB_RUN_NUMBER}

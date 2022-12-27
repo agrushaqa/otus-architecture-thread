@@ -6,4 +6,6 @@ def create_instance(module_name, class_name, *args, **kwargs):
 
 
 def create_command_instance(class_name, *args, **kwargs):
-    return create_instance("src.commands", class_name, *args, **kwargs)
+    return create_instance("features.steps.src.commands", class_name, *args,
+                           **kwargs)
+    # TODO Заменить "features.steps.src.commands"

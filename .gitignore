@@ -1,6 +1,8 @@
 reports
+report
 docs
 allure-report
+test_mysql_db_26122022.db
 
 # Created by https://www.toptal.com/developers/gitignore/api/pycharm,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=pycharm,python

@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 # import allure
 # import pytest
-import common
-import print_for_test
-from scope import Scopes
+import print_for_test as print_for_test
+
+import features.steps.src.ioc.common as common
+from features.steps.src.scope import Scopes
 
 
 class TestScope:

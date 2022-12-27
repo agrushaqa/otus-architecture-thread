@@ -1,14 +1,13 @@
-from working_thread import WorkingThread
-import write_to_file_for_test
 import os.path
-from pathlib import Path
+
+import features.steps.src.write_to_file_for_test as write_to_file_for_test
+from features.steps.src.ioc_working_thread import WorkingThread
 
 
 class TestWorkingThread:
 
-    def test_parallel_write_file_to_text(self):
-        BASE_DIR = Path(__file__).resolve().parent
-        path = os.path.join(BASE_DIR, "tmp", 'samplefile.txt')
+    def test_parallel_write_file_to_text(self, mkdir_tmp_if_not_exist):
+        path = os.path.join(mkdir_tmp_if_not_exist, 'samplefile.txt')
 
         def mytask(mydata):
             a = write_to_file_for_test.WriteToFileForTest()
@@ -24,9 +23,8 @@ class TestWorkingThread:
         os.remove(path)
         assert content == "34\n"
 
-    def test_write_file_to_text(self):
-        BASE_DIR = Path(__file__).resolve().parent
-        path = os.path.join(BASE_DIR, "tmp", 'samplefile.txt')
+    def test_write_file_to_text(self, mkdir_tmp_if_not_exist):
+        path = os.path.join(mkdir_tmp_if_not_exist, 'samplefile.txt')
         a = write_to_file_for_test.WriteToFileForTest()
         a.execute(path, "34")
         with open(path, 'r') as f:

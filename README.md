@@ -40,7 +40,18 @@
     Итого: 10 баллов
     Задание считается принятым, если набрано не менее 7 баллов.
 
-
+# Реализация
+смотри тесты в
+tests\test_ioc_queue.py
+# hard stop отличает тем, что не выполняет команды идующие после неё
+пример:
+        context_command_queue1.add_ioc_command("HardStop")
+        context_command_queue1.add_ioc_command("Sleep", 12)
+# soft stop выполняет команды идующие после неё
+как видно в 
+thread\features\steps\src\ioc_commands_queue.py
+я на будущее добавил счётчик и интервал для того, чтобы SoftStop мог ждать 
+подольше или поменьше
 
 Домашнее задание 5
 
@@ -114,7 +125,12 @@ IoC.Resolve("двигаться прямо", obj);
     Максимальная оценка за задание 10 баллов.
     Задание принимается, если задание оценено не менее, чем в 7 баллов.
 
-
+# Замечания
+## commands\__init__.py
+При добавлении команды в
+\thread\features\steps\src\commands
+её нужно добавлять в
+\thread\features\steps\src\commands\__init__.py
 
 # requirements.txt
 ## create
@@ -130,24 +146,35 @@ isort .
 ## mypy
 python -m pip install mypy
 ### run 
-mypy .
+mypy . --no-namespace-packages
 ## flake8
 python -m pip install flake8
 ### run
-flake8 --exclude venv,docs
+flake8 --exclude venv,docs --ignore=F401
 ## code coverage
 pip install coverage
 ### run
 coverage run C:\Users\agrusha\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\behave\__main__.py
 в файле .coveragerc нужно указать исходники
 
-# Pytest - Run Tests in Parallel
+# Pytest
 ## install
 ```pip install pytest-xdist```
 
 also:
 https://pypi.org/project/pytest-parallel/
-## run
+## run Tests in Parallel
 ```pytest -n 2 test_common.py```
-
+## run one module
+```
+python -m pytest --rootdir=. tests\test_common.py
+```
+## run with allure
+```
+python -m pytest --rootdir=. tests --alluredir=report/
+```
+# allure
+```
+allure generate report && allure open
+```
 

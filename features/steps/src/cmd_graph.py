@@ -1,7 +1,7 @@
 import json
 import os
 
-from src.create_class import create_command_instance
+from features.steps.src.create_class import create_command_instance
 
 
 def get_json_content():
@@ -19,8 +19,7 @@ def get_target_method(cmd, ex):
     for i_list_cmd in json_content:
         if i_list_cmd['from']['class'] == str_cmd:
             if i_list_cmd['exception'] == str_exception:
-                instance = create_command_instance(
-                                       i_list_cmd['to']["class"],
-                                       cmd, ex)
+                instance = create_command_instance(i_list_cmd['to']["class"],
+                                                   cmd, ex)
                 return instance
     raise Exception(f'Not_found_{str_cmd}_{str_exception}')

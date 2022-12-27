@@ -1,4 +1,4 @@
-from src.cmd_graph import get_target_method
+from features.steps.src.cmd_graph import get_target_method
 
 
 def exception_handler(queue, cmd, ex):

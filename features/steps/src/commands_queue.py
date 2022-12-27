@@ -1,8 +1,9 @@
 import queue
 
-from src.exception_handler import exception_handler
+from features.steps.src.exception_handler import exception_handler
 
 
+# используется только для обратной совместимости
 class CommandsQueue:
     def __init__(self):
         self._running = True
@@ -22,9 +23,6 @@ class CommandsQueue:
 
     def add_command(self, cmd):
         self.direct_queue.put(cmd)
-
-    def wait_for_actual_termination(self):
-        self.q.join()
 
     def stop(self):
         self._running = False

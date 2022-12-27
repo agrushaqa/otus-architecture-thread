@@ -9,6 +9,11 @@
     "to": {"class": "OneCommand"},
     "exception": "<class 'ConnectionError'>"
   },
+    {
+    "from": {"class": "MysqlDbCreate"},
+    "to": {"class": "OneCommand"},
+    "exception": "<class 'ConnectionError'>"
+  },
   {
     "from": {"class": "TwoCommand"},
     "to": {"class": "OneCommand"},
