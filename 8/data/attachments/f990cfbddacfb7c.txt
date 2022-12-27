@@ -1,2 +1,0 @@
-2022-12-27 12:53:57.202 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:98 - direct_queue get command:
-2022-12-27 12:53:57.202 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:99 - None

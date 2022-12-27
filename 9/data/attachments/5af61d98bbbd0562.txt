@@ -1,0 +1,24 @@
+2022-12-27 13:09:14.169 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:98 - direct_queue get command:
+2022-12-27 13:09:14.169 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:99 - <features.steps.src.commands.mysql_db_create.MysqlDbCreate object at 0x7f698f70d5d0>
+2022-12-27 13:09:14.172 | INFO     | features.steps.src.ioc_commands_queue:queue_without_ioc:43 - direct_queue execute command:
+2022-12-27 13:09:14.172 | INFO     | features.steps.src.ioc_commands_queue:queue_without_ioc:44 - <features.steps.src.commands.mysql_db_create.MysqlDbCreate object at 0x7f698f70d5d0>
+2022-12-27 13:09:14.172 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:98 - ioc_register_direct_queue get command:
+2022-12-27 13:09:14.172 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:99 - ('SoftStop', <bound method IocCommandQueue.soft_stop of <features.steps.src.ioc_commands_queue.IocCommandQueue object at 0x7f698f70c3a0>>)
+2022-12-27 13:09:14.172 | INFO     | features.steps.src.ioc_commands_queue:ioc_register_queue:66 - SoftStop
+2022-12-27 13:09:14.172 | INFO     | features.steps.src.ioc_commands_queue:ioc_register_queue:67 - <bound method IocCommandQueue.soft_stop of <features.steps.src.ioc_commands_queue.IocCommandQueue object at 0x7f698f70c3a0>>
+2022-12-27 13:09:15.174 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:98 - ioc_register_direct_queue get command:
+2022-12-27 13:09:15.174 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:99 - ('Sleep', <built-in function sleep>)
+2022-12-27 13:09:15.174 | INFO     | features.steps.src.ioc_commands_queue:ioc_register_queue:66 - Sleep
+2022-12-27 13:09:15.174 | INFO     | features.steps.src.ioc_commands_queue:ioc_register_queue:67 - <built-in function sleep>
+2022-12-27 13:09:16.175 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:98 - ioc_exec_direct_queue get command:
+2022-12-27 13:09:16.176 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:99 - {'command': 'SoftStop', 'argv': (), 'kwargs': {}}
+2022-12-27 13:09:16.176 | INFO     | features.steps.src.ioc_commands_queue:ioc_execution_queue:84 - ioc_exec_direct_queue execute command:
+2022-12-27 13:09:16.176 | INFO     | features.steps.src.ioc_commands_queue:ioc_execution_queue:85 - SoftStop
+2022-12-27 13:09:16.176 | INFO     | features.steps.src.ioc_commands_queue:ioc_execution_queue:86 - ()
+2022-12-27 13:09:16.176 | INFO     | features.steps.src.ioc_commands_queue:ioc_execution_queue:87 - {}
+2022-12-27 13:09:17.177 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:98 - ioc_exec_direct_queue get command:
+2022-12-27 13:09:17.177 | INFO     | features.steps.src.ioc_commands_queue:queue_handler:99 - {'command': 'Sleep', 'argv': (12,), 'kwargs': {}}
+2022-12-27 13:09:29.180 | INFO     | features.steps.src.ioc_commands_queue:ioc_execution_queue:84 - ioc_exec_direct_queue execute command:
+2022-12-27 13:09:29.181 | INFO     | features.steps.src.ioc_commands_queue:ioc_execution_queue:85 - Sleep
+2022-12-27 13:09:29.181 | INFO     | features.steps.src.ioc_commands_queue:ioc_execution_queue:86 - (12,)
+2022-12-27 13:09:29.181 | INFO     | features.steps.src.ioc_commands_queue:ioc_execution_queue:87 - {}
